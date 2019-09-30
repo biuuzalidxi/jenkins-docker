@@ -1,0 +1,15 @@
+version: '3'
+services:
+  jenkins:
+    image: jenkins-docker-lts
+    user: root
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./jenkins_home:/var/jenkins_home
+      - /usr/bin/docker:/usr/bin/docker
+    environment:
+      JENKINS_HOST_HOME: "./data/jenkins"
+      JENKINS_USER: "1000"
+    ports: 
+      - "8880:8080"
+      - "50000:50000"
